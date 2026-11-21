@@ -8,10 +8,11 @@ class Account {
     this.balance = balance;
   }
   deposit(amount: number) {
+    if (amount < 500) throw new Error("Deposit atleast 500 BDT/-");
     return (this.balance = this.balance + amount);
   }
 }
 const account = new Account(1123, "sd", 45000);
-account.deposit(0);
+account.deposit(500);
 
 console.log(account.balance);
