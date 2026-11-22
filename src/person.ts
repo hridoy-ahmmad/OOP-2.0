@@ -4,19 +4,27 @@ class Person {
     public lastName: string,
   ) {}
   get fullName() {
-    return "Full Name: " + this.firstName + " " + this.lastName;
+    return this.firstName + " " + this.lastName;
   }
 }
 
 class Student extends Person {}
 class Teacher extends Person {
   get fullName() {
-    return "Full Name: "+ 'Professor ' + this.firstName + " " + this.lastName;
+    return "Full Name: " + "Professor " + super.fullName;
+  }
+}
+class Principal extends Person {
+  get fullName() {
+    return "Full Name: " + "Principal " + super.fullName;
   }
 }
 
 const student = new Student("Alisan", "Husen");
-const teacher = new Teacher('Md. Mokbul', 'Shekh')
+const teacher = new Teacher("Md. Mokbul", "Shekh");
+const principal = new Principal("Md. Motiur", "Master");
 
-
-console.log(teacher.fullName);
+const printPerson = (people: Person[]) => {
+  for (let person of people) console.log(person.fullName);
+};
+printPerson([student, teacher, principal]);
